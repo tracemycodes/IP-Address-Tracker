@@ -48,7 +48,6 @@ input[type="text"] {
   border: none;
   border-bottom-left-radius: 6px;
   border-top-left-radius: 6px;
-  font-size: 1rem;
   font-size: clamp(0.65rem, 3vw, 1rem);
 }
 
@@ -92,6 +91,10 @@ section p {
 @media (max-width: 570px) {
   header {
     height: 17rem;
+  }
+  input[type="text"] {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
   }
   section {
     flex-direction: column;
