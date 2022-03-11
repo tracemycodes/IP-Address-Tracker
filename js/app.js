@@ -1,9 +1,9 @@
 const ipInput = document.querySelector('#ip-address'),
       submitBtn = document.querySelector('.submit-btn'),
       ipNum = document.querySelector('.ip-num'),
-      ipLocation = document.querySelector('.ip-num'),
-      ipTimezone = document.querySelector('.ip-num'),
-      ipIsp = document.querySelector('.ip-num');
+      ipLocation = document.querySelector('.ip-location'),
+      ipTimezone = document.querySelector('.ip-timezone'),
+      ipIsp = document.querySelector('.ip-isp');
 
 
 
@@ -14,7 +14,7 @@ const ipApi = new IpApi()
 
 var map = L.map('map', {
   'center': [0,0],
-  'zoom': 0,
+  'zoom': 1,
   'layers': [
     L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&cppy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -24,16 +24,18 @@ var map = L.map('map', {
 
 
 updateMarker = (update_marker = [-43, 42]) => {
-  map.setView(update_marker, 13)
+  map.setView(update_marker, 16)
   L.marker(update_marker).addTo(map)
 }
 
 
 getIpDetails = (ipValue) => {
 
+  console.log("object");
+
   ipApi.getIpInfo(ipValue).then(data => {
     console.log(data);
-    ipNum.innerHTML = data.ip
+    ipNum.innerHTML = data.ip;
     ipLocation.innerHTML = `${data.location.city} ${data.location.country} ${data.location.postalCode}`
     ipTimezone.innerHTML = data.location.timezone
     ipIsp.innerHTML = data.isp
@@ -45,10 +47,14 @@ getIpDetails = (ipValue) => {
 
 
 submitBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+  console.log(ipInput.value);
   if (ipInput.value != '' && ipInput.value != null) {
     // getIpDetails(ipInput.value)
+    console.log(ipInput.value);
     getIpDetails(ipInput.value);
-  }
+  } else {
   alert('Enter a valid IP address')
+  }
 })
 
