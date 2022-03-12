@@ -46,8 +46,9 @@ input[type="text"] {
   padding: 0.5rem 1rem;
   width: 90%;
   border: none;
-  border-bottom-left-radius: 6px;
-  border-top-left-radius: 6px;
+  /* border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px; */
+  border-radius: none;
   font-size: clamp(0.65rem, 3vw, 1rem);
 }
 
