@@ -65,7 +65,6 @@ section {
 
 section div {
   width: 25%;
-  height: 2rem;
 }
 
 section > * + * {
